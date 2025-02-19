@@ -21,7 +21,7 @@
       ]
     }
   },
-  "postCreateCommand": "npm install -g @angular/cli",
+  "postCreateCommand": "npm install -g @angular/cli && npm install",
   // Update welcome text and set terminal prompt to '$ '
   "onCreateCommand": "echo PS1='\"$ \"' >> ~/.bashrc",
   // Pull all branches
