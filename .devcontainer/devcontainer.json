@@ -12,7 +12,6 @@
       },
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
-        "Angular.ng-template",
         "GitHub.github-vscode-theme",
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
@@ -24,15 +23,6 @@
   },
   // Update welcome text and set terminal prompt to '$ '
   "onCreateCommand": "echo PS1='\"$ \"' >> ~/.bashrc",
-  "postCreateCommand": "npm install -g @angular/cli && npm install",
-  "ports": [
-    {
-      "port": 4200,
-      "label": "Angular App",
-      "onAutoForward": "openBrowser"
-    }
-  ],
-  "remoteUser": "node",
   // Pull all branches
   "postAttachCommand": "git pull --all"
 }
