@@ -1,4 +1,17 @@
 {
+  "name": "Angular Development Environment",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts",
+      "nodeGypDependencies": true
+    }
+  },
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/usr/local/bin:/usr/local/share/nvm/current/bin:${containerWorkspaceFolder}/node_modules/.bin:/home/codespace/.npm-global/bin",
+    "NVM_DIR": "/usr/local/share/nvm",
+    "NODE_PATH": "/usr/local/share/npm-global/lib/node_modules"
+  },
   "customizations": {
     "codespaces": {
       "openFiles": [
@@ -16,14 +29,16 @@
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
         "ritwickdey.LiveServer",
-        "stylelint.vscode-stylelint"
-        // Additional Extensions Here
+        "stylelint.vscode-stylelint",
+        "angular.ng-template",
+        "johnpapa.angular-essentials",
+        "Angular.ng-template"
       ]
     }
   },
-  "postCreateCommand": "npm install -g @angular/cli && npm install",
+  "postCreateCommand": "npm config set prefix ~/.npm-global && npm install -g @angular/cli --prefix ~/.npm-global && npm install && echo 'export PATH=\"$PATH:$HOME/.npm-global/bin\"' >> ~/.bashrc && source ~/.bashrc",
   // Update welcome text and set terminal prompt to '$ '
-  "onCreateCommand": "echo PS1='\"$ \"' >> ~/.bashrc",
+  "onCreateCommand": "mkdir -p ~/.npm-global && npm config set prefix '~/.npm-global' && echo PS1='\"$ \"' >> ~/.bashrc",
   // Pull all branches
   "postAttachCommand": "git pull --all"
 }
